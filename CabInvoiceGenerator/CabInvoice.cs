@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CabInvoiceGenerator
 {
-    class CabInvoice
+    public class CabInvoice
     {
         double ratePerKm;
         double minimumCabFare;
@@ -67,6 +67,12 @@ namespace CabInvoiceGenerator
                 aggFare += GetTotalFare(i.time, i.distance);
             }
             return aggFare;
+        }
+        public string GetInvoiceSummary(Ride[] cabRides)
+        {
+            double totalFare = GetAggregateFare(cabRides);
+            InvoiceSummary summary = new InvoiceSummary(cabRides.Length, totalFare);
+            return $"Total number of rides = {summary.totalRides} \n TotalFare ={summary.totalFare} \n AverageFare = {summary.avgFare}";
         }
     }
 }

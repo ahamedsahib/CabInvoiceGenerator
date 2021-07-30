@@ -108,6 +108,32 @@ namespace CabInvoiceTestProject
 
 
         }
+        /// <summary>
+        /// Test Method to get summary of invoice
+        /// </summary>
+        [TestMethod]
+        public void GetInvoiceSummary()
+        {
+            try
+            {
+                //Arrange
+                CabInvoice getInvoice = new CabInvoice(CabInvoice.RideType.NORMAL);
+                Ride[] cabRides = { new Ride(5, 10.6), new Ride(6, 10.6) };
+                string actual, expected = "Total number of rides = 2 \n TotalFare =223 \n AverageFare = 111.5";
+                //Act
+                actual = getInvoice.GetInvoiceSummary(cabRides);
+
+                //Assert
+                Assert.AreEqual(actual, expected);
+
+            }
+            catch (CabInvoiceCustomException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+        }
 
     }
 }

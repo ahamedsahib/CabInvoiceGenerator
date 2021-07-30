@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CabInvoiceGenerator
 {
-    class CabInvoiceCustomException:Exception
+    public class CabInvoiceCustomException:Exception
     {
         public string message;
         public ExceptionType exceptionType;
