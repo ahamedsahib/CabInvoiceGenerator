@@ -134,6 +134,28 @@ namespace CabInvoiceTestProject
 
 
         }
+        [TestMethod]
+        public void GetPremiumRideFare()
+        {
+            try
+            {
+                //Arrange
+                CabInvoice getInvoice = new CabInvoice(CabInvoice.RideType.PREMIUM);
+                int time = 5;
+                double distance = 10.6, actual, expected = 169;
+                //Act
+                actual = getInvoice.GetTotalFare(time, distance);
+                //Assert
+                Assert.AreEqual(actual, expected);
+
+            }
+            catch (CabInvoiceCustomException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+        }
 
     }
 }
