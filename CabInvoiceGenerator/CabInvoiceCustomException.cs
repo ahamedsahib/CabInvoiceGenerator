@@ -12,7 +12,7 @@ namespace CabInvoiceGenerator
        
         public enum ExceptionType
         {
-            INVALID_TIME, INVALID_DISTANCE
+            INVALID_TIME, INVALID_DISTANCE, INVALID_RIDE_LIST
         }
 
         //Parametrized constructor for custom exception using lambda function
