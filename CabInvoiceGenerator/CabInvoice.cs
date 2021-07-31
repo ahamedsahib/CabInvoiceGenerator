@@ -65,14 +65,14 @@ namespace CabInvoiceGenerator
         }
         public double GetAggregateFare(Ride[] cabRides)
         {
-            double aggFare = default;
+            double aggregateFare = default;
             if (cabRides.Length == 0)
                 throw new CabInvoiceCustomException(CabInvoiceCustomException.ExceptionType.INVALID_RIDE_LIST, "Ride list id invalid");
             foreach (var i in cabRides)
             {
-                aggFare += GetTotalFare(i.time, i.distance);
+                aggregateFare += GetTotalFare(i.time, i.distance);
             }
-            return aggFare;
+            return aggregateFare;
         }
         public string GetInvoiceSummary(Ride[] cabRides)
         {

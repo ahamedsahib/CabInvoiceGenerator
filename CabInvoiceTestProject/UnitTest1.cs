@@ -156,6 +156,34 @@ namespace CabInvoiceTestProject
 
 
         }
+        [TestMethod]
+        public void SearchUser()
+        {
+            try
+            {
+                //Arrange
+                //array for rides
+                Ride[] cabRides = { new Ride(5, 10.6), new Ride(6, 10.6) };
+                UserRideData rideRepository = new UserRideData();
+                //add summary to dictonaries
+                rideRepository.AddUserToDIctionary(001, cabRides, CabInvoice.RideType.NORMAL);
+                rideRepository.AddUserToDIctionary(001, cabRides, CabInvoice.RideType.PREMIUM);
+                rideRepository.AddUserToDIctionary(002, cabRides, CabInvoice.RideType.PREMIUM);
+                string actual, expected = "User Id :1\nNormal\nTotal number of rides = 2\nTotalFare = 223\nAverageFare = 111.5\n*****************\nPremium\nTotal number of rides = 2\nTotalFare = 340\nAverageFare = 170\n*****************\n";
+                //Act
+                actual = rideRepository.SearchUser(001);
+
+                //Assert
+                Assert.AreEqual(actual, expected);
+
+            }
+            catch (CabInvoiceCustomException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+        }
 
     }
 }
